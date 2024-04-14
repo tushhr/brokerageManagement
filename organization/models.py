@@ -3,18 +3,18 @@ from django.db import models
 # Create your models here.
 class Organization(models.Model):
     ORG_TYPE = (
-        ('0', 'broker'),
-        ('1', 'client'),
+        ('BR', 'broker'),
+        ('CL', 'client'),
     )
 
     name = models.CharField(max_length=100)
-    address = models.CharField(max_length=100)
+    address = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    mobile = models.IntegerField()
-    email = models.EmailField()
-    org_type = models.CharField(max_length=1, choices=ORG_TYPE, default='0')
-    bank = models.CharField(max_length=100)
-    bank_account = models.IntegerField()
-    rtgs_code = models.CharField(max_length=100)
-    gst_number = models.CharField(max_length=100)
+    state = models.CharField(max_length=100, null=True, blank=True)
+    mobile = models.IntegerField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    org_type = models.CharField(max_length=2, choices=ORG_TYPE, default='CL')
+    bank = models.CharField(max_length=100, null=True, blank=True)
+    bank_account = models.IntegerField(null=True, blank=True)
+    rtgs_code = models.CharField(max_length=100, null=True, blank=True)
+    gst_number = models.CharField(max_length=100, null=True, blank=True)
