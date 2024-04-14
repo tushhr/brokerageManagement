@@ -18,3 +18,6 @@ class Organization(models.Model):
     bank_account = models.IntegerField(null=True, blank=True)
     rtgs_code = models.CharField(max_length=100, null=True, blank=True)
     gst_number = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
