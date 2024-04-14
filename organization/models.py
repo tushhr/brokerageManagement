@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 class Organization(models.Model):
     ORG_TYPE = (
-        ('0', 'Broker'),
-        ('1', 'Client'),
+        ('0', 'broker'),
+        ('1', 'client'),
     )
 
     name = models.CharField(max_length=100)
