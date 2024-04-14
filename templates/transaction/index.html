@@ -5,7 +5,7 @@
 {% block title %} Bokerage Management {% endblock %}
 
 {% block content %}
-    <form action="" method="POST">
+    <form action="/transaction/" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <select name="seller">
