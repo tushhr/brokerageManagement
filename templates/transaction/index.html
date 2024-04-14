@@ -3,37 +3,81 @@
 {% load static %}
 
 {% block title %} Bokerage Management {% endblock %}
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'transaction/index.css' %}">
+{% endblock %}
 
 {% block content %}
-    <form action="/transaction/" method="POST">
+    <form action="/transaction/" method="POST" class="form">
         {% csrf_token %}
         {{ form.as_p }}
-        <select name="seller">
-            {% for client in clients %}
-                <option value="{{client.id}}">{{client.name}}</option>
-            {% endfor %}
-        </select>
-        
-        <select name="buyer">
-            {% for client in clients %}
-                <option value="{{client.id}}">{{client.name}}</option>
-            {% endfor %}
-        </select>
 
-        
-        <select name="broker">
-            {% for broker in brokers %}
-                <option value="{{broker.id}}">{{broker.name}}</option>
-            {% endfor %}
-        </select>
+        <div class="form-section">
+            <div class="form-field">
+                <label for="seller">Seller:</label>
+                <select name="seller" id="seller">
+                    {% for client in clients %}
+                        <option value="{{ client.id }}">{{ client.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-        <input type="date" name="date">
-        <input type="text" name="item" placeholder="Item" required/>
-        <input type="number" name="quantity" placeholder="Quantity" required/>
-        <input type="number" name="weight" placeholder="Weight" required/>
-        <input type="number" name="rate" placeholder="Selling Rate" required/>
-        <input type="number" name="brokerage" placeholder="Brokerage Rate" required/>
+            <div class="form-field">
+                <label for="buyer">Buyer:</label>
+                <select name="buyer" id="buyer">
+                    {% for client in clients %}
+                        <option value="{{ client.id }}">{{ client.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="broker">Broker:</label>
+                <select name="broker" id="broker">
+                    {% for broker in brokers %}
+                        <option value="{{ broker.id }}">{{ broker.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-field">
+                <label for="item">Item:</label>
+                <input type="text" name="item" id="item" placeholder="Item" required>
+            </div>
+
+            <div class="form-field">
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" placeholder="Quantity" required>
+            </div>
+
+            <div class="form-field">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date">
+            </div>
+        </div>
+
+
+        <div class="form-section">
+            <div class="form-field">
+                <label for="weight">Weight:</label>
+                <input type="number" name="weight" id="weight" placeholder="Weight" required>
+            </div>
+
+            <div class="form-field">
+                <label for="rate">Selling Rate:</label>
+                <input type="number" name="rate" id="rate" placeholder="Selling Rate" required>
+            </div>
+
+            <div class="form-field">
+                <label for="brokerage">Brokerage Rate:</label>
+                <input type="number" name="brokerage" id="brokerage" placeholder="Brokerage Rate" required>
+            </div>
+        </div>
+
         <button type="submit">Submit</button> 
     </form>
+
    
 {% endblock %}
