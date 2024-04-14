@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'organization.apps.OrganizationConfig',
+    'transaction.apps.TransactionConfig',
 ]
 
 MIDDLEWARE = [
