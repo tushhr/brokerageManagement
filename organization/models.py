@@ -10,6 +10,7 @@ class Organization(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100)
+    brokerage_rate = models.DecimalField(max_digits=100, decimal_places=2, null=True, blank=True)
     state = models.CharField(max_length=100, null=True, blank=True)
     mobile = models.IntegerField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
