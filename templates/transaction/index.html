@@ -12,6 +12,11 @@
         {% csrf_token %}
         {{ form.as_p }}
 
+        <div class="form-field" style="width: 7rem;">
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date">
+        </div>
+        
         <div class="form-section">
             <div class="form-field">
                 <label for="seller">Seller:</label>
@@ -30,6 +35,7 @@
                     {% endfor %}
                 </select>
             </div>
+        </div>
 
             <div class="form-field">
                 <label for="broker">Broker:</label>
@@ -39,12 +45,15 @@
                     {% endfor %}
                 </select>
             </div>
-        </div>
 
         <div class="form-section">
             <div class="form-field">
                 <label for="item">Item:</label>
-                <input type="text" name="item" id="item" placeholder="Item" required>
+                <select name="item" id="item">
+                    {% for item in items %}
+                        <option value="{{ item.id }}">{{ item.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
             <div class="form-field">
@@ -52,10 +61,6 @@
                 <input type="number" name="quantity" id="quantity" placeholder="Quantity" required>
             </div>
 
-            <div class="form-field">
-                <label for="date">Date:</label>
-                <input type="date" name="date" id="date">
-            </div>
         </div>
 
 
@@ -68,11 +73,6 @@
             <div class="form-field">
                 <label for="rate">Selling Rate:</label>
                 <input type="number" name="rate" id="rate" placeholder="Selling Rate" required>
-            </div>
-
-            <div class="form-field">
-                <label for="brokerage">Brokerage Rate:</label>
-                <input type="number" name="brokerage" id="brokerage" placeholder="Brokerage Rate" required>
             </div>
         </div>
 
