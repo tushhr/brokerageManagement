@@ -11,6 +11,6 @@ class Transaction(models.Model):
      date = models.DateField()
      item = models.CharField(max_length=100)
      quantity = models.IntegerField()
-     weight = models.IntegerField()
+     weight = models.DecimalField(max_digits=100, decimal_places=2)
      rate = models.IntegerField()
      brokerage_rate = models.IntegerField()
