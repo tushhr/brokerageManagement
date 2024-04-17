@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Brokerage Management {% endblock %}
+
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'organization/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <ul class="org_list">
+        {% for client in clients %}
+            <li><a href="{% url 'organization:org_detail' org_id=client.id %}">{{ client.name }}</a></li> 
+        {% endfor %}
+    </ul>
+{% endblock %}
