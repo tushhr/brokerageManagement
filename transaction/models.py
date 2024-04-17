@@ -4,12 +4,18 @@ from organization.models import Organization
 
 # Create your models here.
 
+class Item(models.Model):
+     name = models.CharField(max_length=100)
+
+     def __str__(self):
+         return self.name
+
 class Transaction(models.Model):
      seller = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='seller')
      buyer = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='buyer')
      broker = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='broker')
      date = models.DateField()
-     item = models.CharField(max_length=100)
+     item = models.ForeignKey(Item, on_delete=models.CASCADE)
      quantity = models.IntegerField()
      weight = models.DecimalField(max_digits=100, decimal_places=2)
      rate = models.IntegerField()
