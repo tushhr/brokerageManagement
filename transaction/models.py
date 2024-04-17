@@ -13,4 +13,8 @@ class Transaction(models.Model):
      quantity = models.IntegerField()
      weight = models.DecimalField(max_digits=100, decimal_places=2)
      rate = models.IntegerField()
-     brokerage_rate = models.IntegerField()
+     seller_brokerage_rate = models.DecimalField(max_digits=100, decimal_places=2)
+     buyer_brokerage_rate = models.DecimalField(max_digits=100, decimal_places=2)
+
+     def __str__(self):
+          return self.seller.name + ' sold to ' + self.buyer.name + ' on ' + str(self.date)
